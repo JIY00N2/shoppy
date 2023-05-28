@@ -20,9 +20,8 @@ export default function Navbar() {
     <header className='flex justify-between border-b border-gray-300 p-2'>
       {/* 최상위 경로로 이동 */}
       <Link to ='/' className='flex itmes-center text-4xl text-brand'>
-        <FiShoppingBag>
-          <h1>Shoppy</h1>
-        </FiShoppingBag>
+        <FiShoppingBag></FiShoppingBag>
+        <h1>Shoppy</h1>
       </Link>
       <nav className='flex items-center gap-4 font-semibold'>
         {/* 상단에 다양한 nav 메뉴들  */}
