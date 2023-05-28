@@ -22,6 +22,9 @@ const auth = getAuth();
 const provider = new GoogleAuthProvider();
 const database = getDatabase(app);
 
+// 로그인시 팝업 띄우기
+provider.setCustomParameters({prompt: 'select_account'});
+
 export function login(){
   signInWithPopup(auth, provider)
   .catch(console.error);
