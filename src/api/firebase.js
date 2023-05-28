@@ -7,7 +7,8 @@ import {
   onAuthStateChanged, 
   signOut 
 } from "firebase/auth";
-import { getDatabase, ref, child, get } from "firebase/database";
+import { getDatabase, ref, set, get } from "firebase/database";
+import {v4 as uuid} from 'uuid';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -58,5 +59,15 @@ async function adminUser(user){
     });
 }
 
+export async function addNewProduct(product, image){
+  const id = uuid();
+  set(ref(database, `products/${id}`),{
+    ...product,
+    id,
+    price: parseInt(product.price),
+    image,
+    options: product.options.split(','),
+  });
+}
 // 오류 발생시
 // yarn add @firebase/app 설치
