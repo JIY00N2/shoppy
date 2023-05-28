@@ -4,6 +4,7 @@ import {FiShoppingBag} from 'react-icons/fi';
 import {BsFillPencilFill} from 'react-icons/bs';
 import { login, logout, onUserStateChange } from '../api/firebase';
 import User from './User';
+import Button from './ui/Button';
 
 export default function Navbar() {
   const [user, setUser] = useState();
@@ -27,15 +28,16 @@ export default function Navbar() {
         {/* 상단에 다양한 nav 메뉴들  */}
         <Link to='/products'>Products</Link>
         <Link to='/carts'>Carts</Link>
-        <Link to='/products/new' className='text-2xl'>
-          <BsFillPencilFill>
-          </BsFillPencilFill>
-        </Link>
+        {user && user.isAdmin && (
+          <Link to='/products/new' className='text-2xl'>
+            <BsFillPencilFill></BsFillPencilFill>
+          </Link>
+        )}
         {user && <User user={user}></User>}
         {/* 사용자가 없다면 로그인 버튼을 보여줌*/}
-        {!user && <button onClick ={login}>Login</button>}
+        {!user && <Button text ={'Login'} onClick ={login}>Login</Button>}
         {/* 사용자가 있다면 로그아웃 버튼을 보여줌*/}
-        {user && <button onClick ={logout}>Logout</button>}
+        {user && <Button text ={'Logout'} onClick ={logout}>Logout</Button>}
       </nav>
     </header>
   );
