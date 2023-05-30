@@ -32,17 +32,9 @@ export default function Navbar() {
         )}
         {user && <User user={user}></User>}
         {/* 사용자가 없다면 로그인 버튼을 보여줌*/}
-        {!user && (
-          <Button text={"Login"} onClick={login}>
-            Login
-          </Button>
-        )}
+        {!user && <Button text={"Login"} onClick={login}></Button>}
         {/* 사용자가 있다면 로그아웃 버튼을 보여줌*/}
-        {user && (
-          <Button text={"Logout"} onClick={logout}>
-            Logout
-          </Button>
-        )}
+        {user && <Button text={"Logout"} onClick={logout}></Button>}
       </nav>
     </header>
   );
